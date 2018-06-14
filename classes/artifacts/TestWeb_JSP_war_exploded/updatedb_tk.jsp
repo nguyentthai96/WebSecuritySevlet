@@ -1,31 +1,40 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="java.io.*,java.util.*,java.sql.*"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@ page import="java.io.*,java.util.*,java.sql.*" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <%
-	request.setCharacterEncoding("UTF-8");
-	response.setCharacterEncoding("UTF-8");
+    request.setCharacterEncoding("UTF-8");
+    response.setCharacterEncoding("UTF-8");
 %>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
+<c:choose>
+    <c:when test="${not empty sessionScope['loginUser'] and sessionScope['qUser']==0}">  <%-- NTT TODO fixed error 2 Bypass a Path Based Access Control c:choose and c:when as switch case--%>
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+            <title>JSP Page</title>
+        </head>
+        <body>
         <sql:setDataSource var="dbsource" driver="com.mysql.jdbc.Driver"
-                           url="${sessionScope['url']}" user="${sessionScope['userdb']}" password="${sessionScope['passdb']}" />
+                           url="${sessionScope['url']}" user="${sessionScope['userdb']}"
+                           password="${sessionScope['passdb']}"/>
         <sql:update dataSource="${dbsource}" var="count">
             UPDATE taikhoan SET MaQuyen = ?, Trangthaihoatdong=?
             WHERE id='${param.id}'
-            <sql:param value="${param.maquyen}" />
-            <sql:param value="${param.tthd}" />
+            <sql:param value="${param.maquyen}"/>
+            <sql:param value="${param.tthd}"/>
         </sql:update>
         <c:if test="${count>=1}">
             <font size="5" color='green'> Congratulations ! Data updated
-            successfully.</font>
+                successfully.</font>
             <br>
-            <a href="admin2.jsp"class="btn btn-default">Back</a> 
+            <a href="admin2.jsp" class="btn btn-default">Back</a>
         </c:if>
-    </body>
-</html>
+        </body>
+        </html>
+    </c:when>
+    <c:otherwise>
+        <c:redirect url="index.jsp"/>
+    </c:otherwise>
+
+</c:choose>
