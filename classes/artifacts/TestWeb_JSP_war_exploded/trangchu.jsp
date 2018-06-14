@@ -2,18 +2,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-			
-			<c:set scope="session"
-            var="url"
-            value="jdbc:mysql://localhost/fixservelet?useUnicode=true&characterEncoding=UTF-8"/>
-            <%--value="jdbc:mysql://localhost/tapchikhoahoc?useUnicode=true&characterEncoding=UTF-8"/>--%>
-            <c:set scope="session"
-            var="userdb"
-            value="root"/>
-            <c:set scope="session"
-            var="passdb"
-            value="NtT.1996"/>
-            		
 <sql:setDataSource var="dataSource" driver="com.mysql.jdbc.Driver"
                    url="${sessionScope['url']}" user="${sessionScope['userdb']}" password="${sessionScope['passdb']}" />
  
@@ -22,5 +10,4 @@
         Where trangthai_duocdang='2'
 </sql:query>
  
-<c:import url="dispresult.jsp?pageNumber=1"/>
-
+<c:import url="trangchu2.jsp?pageNumber=1"/>

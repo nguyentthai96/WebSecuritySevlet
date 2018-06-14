@@ -1,0 +1,23 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="TestWeb_JSP:war exploded">
+    <output-path>$PROJECT_DIR$/classes/artifacts/TestWeb_JSP_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="TestWeb_JSP" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="module" name="javax.servlet.jsp.jstl-1.2.4.jar" module-name="TestWeb_JSP" />
+          <element id="library" level="module" name="javax.servlet.jsp.jstl-api-1.2.1.jar" module-name="TestWeb_JSP" />
+          <element id="library" level="module" name="mysql-connector-java-6.0.4.jar" module-name="TestWeb_JSP" />
+          <element id="library" level="module" name="activation.jar" module-name="TestWeb_JSP" />
+          <element id="library" level="module" name="mail.jar" module-name="TestWeb_JSP" />
+          <element id="library" level="module" name="jxl-2.6.jar" module-name="TestWeb_JSP" />
+          <element id="library" level="module" name="gson-2.2.4.jar" module-name="TestWeb_JSP" />
+          <element id="library" level="module" name="standard-1.1.2.jar" module-name="TestWeb_JSP" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="TestWeb_JSP/web/Web" />
+    </root>
+  </artifact>
+</component>
