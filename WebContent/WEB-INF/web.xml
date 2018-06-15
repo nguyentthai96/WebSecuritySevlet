@@ -8,6 +8,8 @@
         <web-resource-collection>
             <web-resource-name>TestWeb_JSP</web-resource-name>
             <url-pattern>/*</url-pattern>
+            <!--<http-method>GET</http-method>-->
+            <!--<http-method>POST</http-method>-->
         </web-resource-collection>
 
         <user-data-constraint>

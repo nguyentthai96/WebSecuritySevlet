@@ -51,8 +51,9 @@ public class LayThongTin extends HttpServlet {
 	            		+ "where ds_baiviet_phanbien.username_taikhoan=taikhoan.Username and "
 	            		+ "ds_baiviet_phanbien.ID_baiviet_dagui=ds_baiviet_dagui.ID_baiviet_dagui and "
 	            		+ "ds_baiviet_phanbien.ID_baiviet_phanbien=ds_noidung_phanbien.ID_baiviet_phanbien and "
-	            		+ "ds_baiviet_dagui.ID_baiviet_dagui="+id;
-	            PreparedStatement statement = conn.prepareStatement(sql);	
+	            		+ "ds_baiviet_dagui.ID_baiviet_dagui=?"; //TODO NTT
+	            PreparedStatement statement = conn.prepareStatement(sql);
+	            statement.setString(1,id);
 	            ResultSet result = statement.executeQuery();
 			
 			while(result.next()){			
