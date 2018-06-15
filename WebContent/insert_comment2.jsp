@@ -28,9 +28,15 @@
         String dbPass = (String) session.getAttribute("passdb");
         Class.forName("com.mysql.jdbc.Driver");
         Connection con = DriverManager.getConnection(dbURL, dbUser, dbPass);
-        Statement st = con.createStatement();
+        String sql = "insert into comment(noidung_comment, danhgia, ID_baiviet, username_nguoi_comment) values (?, ?, ?, ?);";
+        PreparedStatement st = con.prepareStatement(sql);
+        st.setString(1, noidung_comment);
+        st.setInt(2, danhgia);
+        st.setString(3, ID_baiviet);
+        st.setString(4, username_nguoi_comment);
         //ResultSet rs;
-        int i = st.executeUpdate("insert into comment(noidung_comment, danhgia, ID_baiviet, username_nguoi_comment) values ('" + noidung_comment + "','" + danhgia + "','" + ID_baiviet + "','" + username_nguoi_comment + "')");
+//        int i = st.executeUpdate("insert into comment(noidung_comment, danhgia, ID_baiviet, username_nguoi_comment) values ('" + noidung_comment + "','" + danhgia + "','" + ID_baiviet + "','" + username_nguoi_comment + "')");
+        int i = st.executeUpdate();
         if (i > 0) {
             message = "Bình Luận Thành Công!";
             //	session.setAttribute("Message", message);
