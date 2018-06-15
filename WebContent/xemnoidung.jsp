@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <!DOCTYPE html>
@@ -622,14 +623,14 @@
                                     and ds_noidung_bientap.ID_noidung_bientap='${param.id}'
                                 </sql:query>
                                 <c:forEach var="rows" items="${ketqua.rows}">
-                                    <h5><strong>${rows.username_nguoi_comment}</strong></h5>
+                                    <h5><strong><c:out value="${rows.username_nguoi_comment}"/></strong></h5>  <%-- TODO NTT fix XSS reflected  --%>
                                     ${rows.danhgia} <span style="font-size: 15px"
                                                           class="glyphicon glyphicon-star selected"
                                                           aria-hidden="true"></span>
                                     <div class="row">
                                         <div class="col-sm-10">
                                             <div class="well well-lg">
-                                                    ${rows.noidung_comment }
+                                                <c:out value="${rows.noidung_comment }"/> <%-- TODO NTT fix XSS reflected  --%>
                                             </div>
                                         </div>
                                         <div class="col-sm-2"></div>
@@ -687,7 +688,7 @@
                                     <div class="form-group" hidden="">
                                         <label class="col-sm-2">ID</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" name="ID_baiviet" value="${param.id}">
+                                            <input class="form-control" name="ID_baiviet" value="${fn:escapeXml(param.id)}" >
                                         </div>
                                     </div>
 

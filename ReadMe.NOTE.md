@@ -45,3 +45,13 @@ changeit
 
 https://stackoverflow.com/questions/8169999/how-can-i-create-a-self-signed-cert-for-localhost
 https://www.youtube.com/watch?v=8sHeP4RR3tc
+
+netstat -anpo tcp | findstr 3306
+netstat -anp | grep :3306
+
+
+Clickjacking 
+http://www.javaguruonline.com/2016/02/clickjacking-prevention-using-x-frame.html
+https://javascript.info/clickjacking
+https://stackoverflow.com/questions/29845714/how-to-prevent-frame-injection-clickjacking-in-java-application
+https://stackoverflow.com/questions/8397267/how-to-deny-site-access-from-an-iframe

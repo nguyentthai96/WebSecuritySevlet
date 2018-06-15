@@ -4,6 +4,35 @@
          id="WebApp_ID" version="3.1">
     <display-name>TestWeb_JSP</display-name>
 
+    <!--<filter>-->
+        <!--<filter-name>ClickjackFilterDeny</filter-name>-->
+        <!--<filter-class>ClickjackFilter</filter-class>-->
+        <!--<init-param>-->
+            <!--<param-name>mode</param-name>-->
+            <!--<param-value>DENY</param-value>-->
+        <!--</init-param>-->
+    <!--</filter>-->
+
+    <filter>
+        <filter-name>ClickjackFilterSameOrigin</filter-name>
+        <filter-class>ClickjackFilter</filter-class>
+        <init-param>
+            <param-name>mode</param-name>
+            <param-value>SAMEORIGIN</param-value>
+        </init-param>
+    </filter>
+    <!--  use the Deny version to prevent anyone, including yourself, from framing the page -->
+    <!--<filter-mapping>-->
+        <!--<filter-name>ClickjackFilterDeny</filter-name>-->
+        <!--<url-pattern>/*</url-pattern>-->
+    <!--</filter-mapping>-->
+    <!--use the SameOrigin version to allow your application to frame, but nobody else-->
+    <filter-mapping>
+        <filter-name>ClickjackFilterSameOrigin</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>TestWeb_JSP</web-resource-name>
